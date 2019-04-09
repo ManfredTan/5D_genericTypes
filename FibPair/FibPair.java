@@ -36,30 +36,35 @@ public class FibPair {
 
         // code here to make a pair from the params
 
-        Pair<Integer> pairAfter = new Pair<Integer>( bigger, bigger + smaller);
+        Pair<Integer> oldPair = new Pair<Integer>( bigger, smaller);
+        Pair<Integer> newPair = nextPairAfter( oldPair );
 
         System.out.println(
             "The pair after "
-          + "[" + smaller + "," + bigger + "]" + " is "
-          + "[" + pairAfter.getFirst() + "," + pairAfter.getSecond() + "]"
+          + oldPair
+          + " is "
+          + newPair
           + " ...expecting " + expect
           + System.lineSeparator());
      }
 
 
-    // /**
-    //   Calculate the next Fibonacci-style pair.
-    //
-    //   @return the pair after the given pair.
-    //     In the new pair,
-    //     the big number is the sum of the given pair
-    //     the small number is the the old big number
-    //  */
-    // private static ?? nextPairAfter( ??) {
-    //     return ?? the next pair;
-    // }
-    //
-    //
+    /**
+      Calculate the next Fibonacci-style pair.
+
+      @return the pair after the given pair.
+        In the new pair,
+        the big number is the sum of the given pair
+        the small number is the the old big number
+     */
+    private static Pair<Integer> nextPairAfter( Pair<Integer> oldPair ) {
+        Pair<Integer> newPair = new Pair<Integer>(
+            oldPair.getFirst(), oldPair.getFirst() + oldPair.getSecond()
+        );
+        return newPair;
+    }
+
+
     // /**
     //   test fib()
     //   optional extra education
@@ -73,8 +78,8 @@ public class FibPair {
     //       + " ...expecting " + expect
     //       + System.lineSeparator());
     //  }
-    //
-    //
+
+
     // /**
     //   Calculate a Fibonacci number recursively
     //   and in linear time.
